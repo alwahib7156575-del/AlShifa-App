@@ -10,8 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Java 17
@@ -26,8 +27,9 @@ jobs:
       - name: Install Android SDK packages
         run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
-      - name: Extract project
+      - name: Extract Android project
         run: |
+          rm -rf app-project
           mkdir app-project
           unzip -q alshifa_project.zip -d app-project
 
